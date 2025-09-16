@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Product Dashboard</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <h1>Product Price Dashboard</h1>
+    <canvas id="productChart" width="600" height="400"></canvas>
+
+    <script>
+        // Fetch all products
+        fetch('/api/products/')
+            .then(response => response.json())
+            .then(products => {
+                const labels = products.map(p => p.name);       // Product names
+                const prices = products.map(p => p.price);      // Product prices
+
+                const ctx = document.getElementById('productChart').getContext('2d');
+                new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                        labels: labels,
+                        datasets: [{
+                            label: 'Price',
+                            data: prices,
+                            backgroundColor: 'rgba(54, 162, 235, 0.6)',
+                            borderColor: 'rgba(54, 162, 235, 1)',
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        scales: {
+                            y: {
+                                beginAtZero: true,
+                                title: {
+                                    display: true,
+                                    text: 'Price'
+                                }
+                            },
+                            x: {
+                                title: {
+                                    display: true,
+                                    text: 'Product Name'
+                                }
+                            }
+                        }
+                    }
+                });
+            });
+    </script>
+</body>
+</html>
