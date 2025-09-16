@@ -50,7 +50,7 @@ This project is designed as a demo task for a Full Stack Data Engineer selection
 
 1. **Clone the repository:**
 ```bash
-git clone https://github.com/yourusername/your-repo.git
+git clone https://github.com/AmolDoiphode21/Full-Stack-Data-Engineer-Demo.git
 cd your-repo
 
 
